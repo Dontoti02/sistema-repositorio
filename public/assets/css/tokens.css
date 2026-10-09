@@ -1,0 +1,80 @@
+/**
+ * Design Tokens — Sistema de Diseño del Repositorio Institucional
+ * Variables maestras editables por institución sin tocar código.
+ */
+:root {
+  /* Marca e Identidad */
+  --brand-primary: #113b70;
+  --brand-secondary: #2873bd;
+  --brand-accent: #e4ae35;
+  --brand-on-primary: #ffffff;
+  --brand-on-secondary: #ffffff;
+  --brand-on-accent: #172334;
+
+  /* Superficies y Fondos */
+  --page-bg: #f6f8fc;
+  --surface: #ffffff;
+  --surface-subtle: #f1f5fa;
+  --surface-card: #ffffff;
+  --surface-overlay: rgba(17, 36, 62, 0.45);
+
+  /* Tipografía y Color de Texto */
+  --text: #152438;
+  --text-muted: #5b6a7c;
+  --text-inverse: #ffffff;
+  --border: #dce4ee;
+  --border-focus: #1b64c2;
+  --focus-ring: #1b64c2;
+
+  /* Estructuras Principales */
+  --header-bg: #ffffff;
+  --header-text: #152438;
+  --sidebar-bg: #102d52;
+  --sidebar-text: #f6f8fc;
+  --sidebar-active-bg: rgba(255, 255, 255, 0.12);
+  --footer-bg: #102d52;
+  --footer-text: #f6f8fc;
+
+  /* Estados Semánticos (Preservados en WCAG) */
+  --success: #14794b;
+  --success-bg: #e6f4ea;
+  --success-border: #a8dab5;
+  --warning: #9a6515;
+  --warning-bg: #fef7e0;
+  --warning-border: #f5d48a;
+  --danger: #b42318;
+  --danger-bg: #fce8e6;
+  --danger-border: #f5a8a1;
+  --info: #205b95;
+  --info-bg: #e8f0fe;
+  --info-border: #aecbfa;
+
+  /* Tipografía */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Radios de Borde */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Sombras */
+  --shadow-xs: 0 1px 2px rgba(18, 42, 74, 0.05);
+  --shadow-sm: 0 2px 6px rgba(18, 42, 74, 0.06);
+  --shadow-card: 0 8px 24px rgba(18, 42, 74, 0.07);
+  --shadow-hover: 0 12px 32px rgba(18, 42, 74, 0.12);
+  --shadow-modal: 0 20px 48px rgba(15, 30, 54, 0.22);
+
+  /* Dimensiones del Layout */
+  --container-max: 1240px;
+  --header-height: 76px;
+  --sidebar-width: 270px;
+  --sidebar-collapsed: 72px;
+
+  /* Animaciones y Transiciones */
+  --motion-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}

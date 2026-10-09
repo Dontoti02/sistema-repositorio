@@ -1,0 +1,27 @@
+# Apache 2.4 — Repositorio Institucional
+# DocumentRoot debe apuntar a /public
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # No aplicar a archivos/directorios existentes
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Todo lo demás pasa por index.php
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Bloquear archivos ocultos y sensibles
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+Options -Indexes

@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Consola CLI del repositorio.
+ *
+ * Uso: php bin/console <comando> [opciones]
+ * Comandos reales listados con: php bin/console list
+ */
+
+define('BASE_PATH', dirname(__DIR__));
+
+require BASE_PATH . '/app/Support/helpers.php';
+
+$autoload = BASE_PATH . '/vendor/autoload.php';
+if (!is_file($autoload)) {
+    fwrite(STDERR, "Falta vendor/autoload.php. Ejecute: composer dump-autoload\n");
+    exit(1);
+}
+require $autoload;
+
+use App\Core\Application;
+use App\Console\Kernel;
+
+$app = Application::getInstance();
+$app->boot();
+
+$kernel = new Kernel();
+exit($kernel->handle($argv ?? []));

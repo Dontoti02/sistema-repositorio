@@ -1,0 +1,508 @@
+/**
+ * Layouts — Estructuras Principales del Repositorio Institucional
+ * Portal público, Hero adaptable, Panel administrativo y navegación móvil (320px–1920px).
+ */
+
+/* ==========================================================================
+   1. PORTAL PÚBLICO: BARRA INSTITUCIONAL Y CABECERA
+   ========================================================================== */
+.instbar {
+  background-color: var(--brand-primary);
+  color: var(--brand-on-primary);
+  font-size: 0.8rem;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.instbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.instbar a {
+  color: var(--brand-on-primary);
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.instbar a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.site-header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: box-shadow var(--motion-fast);
+}
+
+.site-header.scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+.site-header .container {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text);
+  min-width: 0;
+}
+
+.brand .logo {
+  max-height: 48px;
+  max-width: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brand-fallback {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  color: var(--brand-on-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-xs);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* Navegación Principal */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: all var(--motion-fast);
+}
+
+.main-nav a:hover {
+  background-color: var(--surface-subtle);
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+.main-nav a[aria-current="page"] {
+  background-color: rgba(17, 59, 112, 0.08);
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* Mobile drawer para navegación pública */
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .main-nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--surface);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px;
+    gap: 12px;
+    box-shadow: var(--shadow-modal);
+    display: none;
+    overflow-y: auto;
+  }
+  .main-nav.open {
+    display: flex;
+  }
+  .main-nav a {
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 1px solid var(--border);
+  }
+}
+
+/* ==========================================================================
+   2. HERO PRINCIPAL DE INICIO
+   ========================================================================== */
+.hero {
+  position: relative;
+  padding: 64px 0 72px 0;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #0d274c 100%);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.hero-solid {
+  background: var(--brand-primary);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+}
+
+.hero-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 39, 76, 0.75) 0%, rgba(13, 39, 76, 0.92) 100%);
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 860px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #ffffff;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.hero .hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* Buscador prominente de portada */
+.hero-searchbar {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 6px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-searchbar input {
+  flex: 1;
+  border: none;
+  padding: 12px 18px;
+  font-size: 1.05rem;
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.hero-searchbar button {
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   3. SECCIONES Y PIE PÚBLICO
+   ========================================================================== */
+.section {
+  padding: 56px 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.site-footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  margin-top: auto;
+  padding-top: 56px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 36px;
+  margin-bottom: 40px;
+}
+
+.footer-brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 20px 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   4. PANEL ADMINISTRATIVO (SHELL COMPLETO)
+   ========================================================================== */
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--page-bg);
+}
+
+.admin-sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width var(--motion-fast);
+  z-index: 1050;
+}
+
+.side-brand {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.side-brand:hover {
+  text-decoration: none;
+}
+
+.side-brand .brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--brand-secondary), var(--brand-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.side-brand-text {
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.side-brand-sub {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.side-group {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 700;
+  padding: 16px 12px 6px 12px;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--motion-fast);
+}
+
+.sidebar-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.sidebar-nav a[aria-current="page"] {
+  background-color: var(--sidebar-active-bg);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--brand-accent);
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Área principal del panel */
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.admin-topbar {
+  height: 68px;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  color: var(--brand-on-primary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 28px 32px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Responsive del panel administrativo */
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -280px;
+    box-shadow: var(--shadow-modal);
+  }
+  .admin-sidebar.open {
+    left: 0;
+  }
+  .sidebar-toggle {
+    display: inline-flex;
+  }
+  .sidebar-overlay.active {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+  }
+  .admin-content {
+    padding: 20px 16px;
+  }
+}
